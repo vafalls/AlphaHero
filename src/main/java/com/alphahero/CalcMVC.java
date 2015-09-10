@@ -21,6 +21,8 @@ public class CalcMVC extends JFrame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.setLocation(30, 150);
+//        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setUndecorated(true);
         frame.add(view);
         frame.setPreferredSize(new Dimension(model.getPanelWidth(), model.getPanelHeight()));
         frame.pack();
