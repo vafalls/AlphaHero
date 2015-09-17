@@ -5,19 +5,15 @@ import java.awt.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.*;
-import java.io.File;
 import java.io.IOException;
 
-import java.net.URL;
-
+@SuppressWarnings("serial")
 class StartView extends JFrame {
 	// ... Components
 	private JButton m_newGameBtn = new JButton("New Game");
 	private JButton m_highscoreBtn = new JButton("Highscore");
 	private JButton m_optionBtn = new JButton("Options");
 
-	// ======================================================= constructor
-	/** Constructor */
 	StartView() {
 		// ... Set up the logic
 		final MyTextPane textPane = new MyTextPane();
@@ -28,7 +24,6 @@ class StartView extends JFrame {
 		this.setResizable(false);
 		this.setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 	}
 
 	void showError(String errMessage) {
@@ -55,8 +50,6 @@ class StartView extends JFrame {
 			// CREATE COMPONENTS
 			JLabel rubrik = new JLabel("          Alpha Hero");
 			rubrik.setFont(new Font("sansserif", Font.BOLD, 40));
-//			JLabel madeby = new JLabel("Made by: David Nogen, Markus Fröberg");
-//			madeby.setFont(new Font("sansserif", Font.BOLD, 20));
 
 			// SETTINGS FOR COMPONENTS
 			m_newGameBtn.setContentAreaFilled(false);
@@ -68,25 +61,23 @@ class StartView extends JFrame {
 			add(m_newGameBtn);
 			add(m_highscoreBtn);
 			add(m_optionBtn);
-//			add(madeby);
 
-			// FönsterInfo
+			// window info
 			setOpaque(false);
 			// setEditable( false );
 			setBackground(new Color(0, 0, 0, 0));
-
 		}
 
 		@Override
 		protected void paintComponent(Graphics g) {
-			// set background green - but can draw image here too
-
+			// set background color- but can draw image here too
 			g.setColor(Color.BLACK);
 			g.fillRect(0, 0, getWidth(), getHeight());
 
-			// uncomment the following to draw an image
+			// draws an image
 			try {
-				Image image = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream("menu-background.jpg"));
+				Image image = ImageIO.read(this.getClass().getClassLoader()
+						.getResourceAsStream("menu-background.jpg"));
 				g.drawImage(image, 0, 0, this);
 			} catch (IOException io) {
 				io.printStackTrace();

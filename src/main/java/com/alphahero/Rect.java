@@ -1,4 +1,5 @@
 package com.alphahero;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -8,109 +9,117 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-
-public class Rect
-{
+public class Rect {
 	private int width, height;
 	private int x, y, dx, dy;
 	private Color color;
 	private Rectangle box;
 	private String bokstav;
 	private boolean alive;
-	
-	//... Bilderna
+
+	// ... Images
 	private Image image;
 	private Image dead_image;
 	private Image alive_image;
-	
-	//============================================================== constructor
-    /** Constructor */
-	public Rect(int x, int y, Color color, int width, int height , String bokstav_)//konstruktorn
-	{
-		//... Constants
+
+	public Rect(int x, int y, Color color, int width, int height,
+			String bokstav_) {
 		this.x = x;
 		this.y = y;
-		this.width=width;
-		this.height=height;
-		this.color=color;
-		this.bokstav=bokstav_;
+		this.width = width;
+		this.height = height;
+		this.color = color;
+		this.bokstav = bokstav_;
 		this.alive = false;
-		
-		//... Initiate Images
-		try{image = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream("Untitled-10.png"));}
-        catch(IOException ex){}
-		try{alive_image = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream("Untitled-12.png"));}
-        catch(IOException ex){}
-		try{dead_image = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream("Untitled-11.png"));}
-        catch(IOException ex){}
+
+		// ... Initiate Images
+		try {
+			image = ImageIO.read(this.getClass().getClassLoader()
+					.getResourceAsStream("Untitled-10.png"));
+		} catch (IOException ex) {
+		}
+		try {
+			alive_image = ImageIO.read(this.getClass().getClassLoader()
+					.getResourceAsStream("Untitled-12.png"));
+		} catch (IOException ex) {
+		}
+		try {
+			dead_image = ImageIO.read(this.getClass().getClassLoader()
+					.getResourceAsStream("Untitled-11.png"));
+		} catch (IOException ex) {
+		}
 	}
-	public void move()
-	{
-	    this.x += dx;
-	    this.y += dy;
-    }
-	public void paint(Graphics g)
-	{
-		//... set
+
+	public void move() {
+		this.x += dx;
+		this.y += dy;
+	}
+
+	public void paint(Graphics g) {
+		// ... set
 		g.setFont(new Font("aasd", 20, 50));
 		g.setColor(Color.white);
-		
-		//.. draw
+
+		// .. draw
 		g.drawImage(image, x, y, 104, 104, null);
-		g.drawString(this.bokstav.toUpperCase(), this.x+32, this.y+68);
-		
-		//end
+		g.drawString(this.bokstav.toUpperCase(), this.x + 32, this.y + 68);
+
+		// end
 		g.finalize();
 	}
-	
-    //================================================================= setValues
-	public void setVelocity(double dx, double dy){
-	    this.dx = (int) dx;
-	    this.dy = (int) dy;
-    }
-	public void setBoundingBox(Rectangle box){
-	    this.box = box;
-    }
-	public void setCurrentImage(boolean dead_or_alive)
-	{
-		if(dead_or_alive)
-		{
-			image=alive_image;
-		}
-		else if(image!=alive_image)
-		{
-			image=dead_image;
+
+	public void setVelocity(double dx, double dy) {
+		this.dx = (int) dx;
+		this.dy = (int) dy;
+	}
+
+	public void setBoundingBox(Rectangle box) {
+		this.box = box;
+	}
+
+	public void setCurrentImage(boolean dead_or_alive) {
+		if (dead_or_alive) {
+			image = alive_image;
+		} else if (image != alive_image) {
+			image = dead_image;
 		}
 	}
-    //================================================================= setValues
-	public void setAlive(){
+
+	public void setAlive() {
 		this.alive = true;
 	}
-    //================================================================= getValues
-	public boolean getAlive(){
+
+	public boolean getAlive() {
 		return alive;
 	}
-	public double getWidth(){
+
+	public double getWidth() {
 		return width;
-		}
-	public double getHeight(){
+	}
+
+	public double getHeight() {
 		return height;
-		}
-	public int getX(){
+	}
+
+	public int getX() {
 		return this.x;
-		}
-	public int getY(){
+	}
+
+	public int getY() {
 		return this.y;
-		}
-	public char getLetter(){
+	}
+
+	public char getLetter() {
 		char temp;
 		temp = this.bokstav.charAt(0);
 		return temp;
-		}
-	public Color getColor(){
+	}
+
+	public Color getColor() {
 		return color;
-		}
-	public Rectangle getBoundingBox(){
+	}
+
+	public Rectangle getBoundingBox() {
 		return box;
-		}
+	}
 }
