@@ -19,7 +19,7 @@ public class CalcMVC extends JFrame {
 		frame.setResizable(false);
 		frame.setLocation(30, 150);
 		// frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		frame.setUndecorated(true);
+		//frame.setUndecorated(true);
 		frame.add(view);
 		frame.setPreferredSize(new Dimension(model.getPanelWidth(), model
 				.getPanelHeight()));
