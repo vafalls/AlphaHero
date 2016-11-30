@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body onload="init()">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
+        
+	<script type="text/javascript">
+         var stage;
+         var square;
+
+         
+         function init() {
+             stage = new createjs.Stage("demoCanvas");
+             square = new createjs.Shape();
+             
+             square.graphics.beginFill("DeepSkyBlue").drawRect(100, 0, 100, 100);
+             
+             stage.addChild(square);
+             window.setInterval(moveSquare, 1);
+             console.log($(window).height());
+             console.log($(document).height());
+             console.log($(window).width());
+             console.log($(document).width());
+         }
+
+         function moveSquare(){
+             square.y = square.y+1;
+             stage.update();
+         }
+         
+         document.addEventListener('keydown', function(event) {
+             if(event.keyCode == 37) {
+                 for (var i=0; i<10; i++) {
+                     console.log("left was pressed")
+                 }
+             }
+             else if(event.keyCode == 39) {
+                 for (var i=0; i<10; i++) {
+                     console.log("right was pressed " + circle.x)
+                 }
+             }
+         });
+         
+	</script>
+
+        <canvas id="demoCanvas" width=$(window).width() height=document.body.clientHeight></canvas>
+        <div></div>
+        
+    </body>
+</html>
